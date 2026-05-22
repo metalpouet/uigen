@@ -1,0 +1,24 @@
+React Component Generator
+Create a pricing card component with a title, price, features list, and a CTA button
+
+This is a static response. You can place an Anthropic API key in the .env file to use the Anthropic API for component generation. Let me create an App.jsx file to display the component.
+
+str_replace_editor
+
+I'll create a Card component for you.
+
+str_replace_editor
+
+Now let me enhance the component with better styling.
+
+str_replace_editor
+
+Perfect! I've created:
+
+Card.jsx - A fully-featured card component
+App.jsx - The mai
+Generating...
+Preview
+Code
+Sign In
+Sign Up

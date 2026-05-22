@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npx playwright *)",
+      "Bash(node playwright_test.js)",
+      "Bash(node playwright_test2.js)",
+      "Bash(node playwright_test3.js)",
+      "Bash(git pull *)"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "playwright"
+  ]
+}
