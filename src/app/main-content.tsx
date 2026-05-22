@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -67,8 +68,8 @@ export function MainContent({ user, project }: MainContentProps) {
                     }
                   >
                     <TabsList className="bg-white/60 border border-neutral-200/60 p-0.5 h-9 shadow-sm">
-                      <TabsTrigger value="preview" className="data-[state=active]:bg-white data-[state=active]:text-neutral-900 data-[state=active]:shadow-sm text-neutral-600 px-4 py-1.5 text-sm font-medium transition-all">Preview</TabsTrigger>
-                      <TabsTrigger value="code" className="data-[state=active]:bg-white data-[state=active]:text-neutral-900 data-[state=active]:shadow-sm text-neutral-600 px-4 py-1.5 text-sm font-medium transition-all">Code</TabsTrigger>
+                      <TabsTrigger value="preview" className="data-[state=active]:bg-white data-[state=active]:text-neutral-900 data-[state=active]:shadow-sm data-[state=inactive]:text-neutral-400 px-4 py-1.5 text-sm font-medium transition-all">Preview</TabsTrigger>
+                      <TabsTrigger value="code" className="data-[state=active]:bg-white data-[state=active]:text-neutral-900 data-[state=active]:shadow-sm data-[state=inactive]:text-neutral-400 px-4 py-1.5 text-sm font-medium transition-all">Code</TabsTrigger>
                     </TabsList>
                   </Tabs>
                   <HeaderActions user={user} projectId={project?.id} />
@@ -76,11 +77,11 @@ export function MainContent({ user, project }: MainContentProps) {
 
                 {/* Content Area */}
                 <div className="flex-1 overflow-hidden bg-neutral-50">
-                  {activeView === "preview" ? (
-                    <div className="h-full bg-white">
-                      <PreviewFrame />
-                    </div>
-                  ) : (
+                  {/* PreviewFrame stays mounted to avoid iframe reload on tab switch */}
+                  <div className={cn("h-full bg-white", activeView !== "preview" && "hidden")}>
+                    <PreviewFrame />
+                  </div>
+                  {activeView === "code" && (
                     <ResizablePanelGroup
                       direction="horizontal"
                       className="h-full"
